@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import LoginPage from './containers/LoginPage/LoginPage';
+import UserPage from './containers/UserPage/UserPage';
+import { UserContext } from './context/UserContext';
+import { useSessionStorage } from './hooks/useSessionStorage';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const { getItemFromSessionStorage } = useSessionStorage('user');
+    const [userData] = useState(() => {
+        return getItemFromSessionStorage();
+    });
+
+    //TODO: create a private/public routes to prevent using /login route when user is logged in
+
+    return (
+        <div className="App">
+            <UserContext.Provider value={userData}>
+                <Routes>
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/user" element={<UserPage />} />
+                </Routes>
+            </UserContext.Provider>
+        </div>
+    );
+};
 
 export default App;

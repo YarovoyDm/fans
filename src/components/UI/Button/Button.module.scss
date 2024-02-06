@@ -1,0 +1,15 @@
+@import '../../../scss/colors.scss';
+
+.button {
+    padding: 5px 10px;
+    width: fit-content;
+    background: white;
+    border: solid 1px $tundora;
+    border-radius: 5px;
+    cursor: pointer;
+    min-width: 100px;
+    &:hover {
+        background: $tundora;
+        color: white;
+    }
+}

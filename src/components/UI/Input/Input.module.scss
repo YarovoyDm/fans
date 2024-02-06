@@ -1,0 +1,14 @@
+@import '../../../scss/colors.scss';
+
+.input {
+    height: 35px;
+    border: solid 1px $tundora;
+    border-radius: 5px;
+    min-width: 250px;
+    margin-bottom: 50px;
+    outline: none;
+    &:focus {
+        border: solid 1px $tundora;
+        outline: none;
+    }
+}

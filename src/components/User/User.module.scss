@@ -1,0 +1,13 @@
+@import '../../scss/colors.scss';
+@import '../../scss/mixins';
+
+.userInfo {
+    width: 350px;
+    height: fit-content;
+    padding: 35px;
+    border: solid 1px $tundora;
+    @include flex-center;
+    .email {
+        margin-right: 20px;
+    }
+}
